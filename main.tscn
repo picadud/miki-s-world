@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://buyp6lm46k2ix"]
+
+[ext_resource type="Script" path="res://GameWorld.gd" id="1_2rl34"]
+[ext_resource type="PackedScene" uid="uid://brnb0otnokkxb" path="res://player.tscn" id="2_sv80d"]
+[ext_resource type="Script" path="res://Camera.gd" id="3_t61ek"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameWorld" type="Node2D" parent="."]
+script = ExtResource("1_2rl34")
+
+[node name="Player" parent="GameWorld" instance=ExtResource("2_sv80d")]
+
+[node name="Camera" type="Camera2D" parent="GameWorld"]
+zoom = Vector2(2, 2)
+script = ExtResource("3_t61ek")
+
+[node name="SpawnPoint" type="Marker2D" parent="GameWorld"]
+position = Vector2(580, 132)
+
+[node name="SoundControl" type="Node2D" parent="."]
