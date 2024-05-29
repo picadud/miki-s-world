@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnsgohjxk8jo4"]
+
+[ext_resource type="Script" path="res://gui/options_menu.gd" id="1_yglhn"]
+[ext_resource type="Script" path="res://gui/MasterVolume.gd" id="2_km3hh"]
+[ext_resource type="Script" path="res://gui/BGMVolume.gd" id="3_uqptg"]
+[ext_resource type="Script" path="res://gui/SFXVolume.gd" id="4_kqjyr"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource("1_yglhn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+text = "菜单"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(740, 440)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tab_alignment = 1
+
+[node name="Audio" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+text = "总音量"
+
+[node name="MasterVolume" type="HSlider" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_km3hh")
+
+[node name="Label2" type="Label" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+text = "音乐"
+
+[node name="BGMVolume" type="HSlider" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("3_uqptg")
+
+[node name="Label3" type="Label" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+text = "音效"
+
+[node name="SFXVolume" type="HSlider" parent="Control/PanelContainer/VBoxContainer/TabContainer/Audio"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("4_kqjyr")
+
+[node name="test" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Save" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer" groups=["button"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "存档"
+
+[node name="OptionsExit" type="Button" parent="Control/PanelContainer/VBoxContainer/HBoxContainer" groups=["button"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "退出"
+
+[connection signal="drag_ended" from="Control/PanelContainer/VBoxContainer/TabContainer/Audio/MasterVolume" to="." method="_on_master_volume_drag_ended"]
+[connection signal="drag_ended" from="Control/PanelContainer/VBoxContainer/TabContainer/Audio/BGMVolume" to="." method="_on_bgm_volume_drag_ended"]
+[connection signal="drag_ended" from="Control/PanelContainer/VBoxContainer/TabContainer/Audio/SFXVolume" to="." method="_on_sfx_volume_drag_ended"]
+[connection signal="pressed" from="Control/PanelContainer/VBoxContainer/HBoxContainer/OptionsExit" to="." method="_on_button_pressed"]

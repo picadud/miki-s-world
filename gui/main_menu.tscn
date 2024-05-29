@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3tvtbmcgio3k"]
+
+[ext_resource type="Script" path="res://gui/main_menu.gd" id="1_y55nt"]
+[ext_resource type="Texture2D" uid="uid://c73xoba3vl2lo" path="res://art/mainmenu.jpg" id="2_jjafg"]
+[ext_resource type="PackedScene" uid="uid://bnsgohjxk8jo4" path="res://gui/options_menu.tscn" id="3_7v1nk"]
+[ext_resource type="Script" path="res://gui/SoundControlGUI.gd" id="4_v0skg"]
+[ext_resource type="AudioStream" uid="uid://bdjms5mo653rf" path="res://audio/bgm_mainmenu.mp3" id="4_vl1ma"]
+[ext_resource type="AudioStream" uid="uid://1w2qngmgl0wi" path="res://audio/sfx_clickbutton.mp3" id="6_ewctf"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_y55nt")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -407.458
+offset_bottom = 407.458
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jjafg")
+expand_mode = 5
+stretch_mode = 4
+flip_h = true
+
+[node name="Title" type="Label" parent="."]
+offset_left = 103.0
+offset_top = 72.0
+offset_right = 351.0
+offset_bottom = 169.0
+text = "这里是游戏的名字"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -259.0
+offset_right = 217.0
+offset_bottom = -38.0
+grow_vertical = 0
+
+[node name="Play" type="Button" parent="Buttons" groups=["button"]]
+layout_mode = 2
+size_flags_vertical = 3
+text = "开始游戏"
+
+[node name="Load" type="Button" parent="Buttons" groups=["button"]]
+layout_mode = 2
+size_flags_vertical = 3
+text = "加载存档"
+
+[node name="Options" type="Button" parent="Buttons" groups=["button"]]
+layout_mode = 2
+size_flags_vertical = 3
+text = "设置"
+
+[node name="Exit" type="Button" parent="Buttons" groups=["button"]]
+layout_mode = 2
+size_flags_vertical = 3
+text = "退出游戏"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_7v1nk")]
+
+[node name="SoundControlGUI" type="Node" parent="."]
+script = ExtResource("4_v0skg")
+
+[node name="MainMenuBgm" type="AudioStreamPlayer" parent="SoundControlGUI"]
+stream = ExtResource("4_vl1ma")
+autoplay = true
+bus = &"BGM"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="SoundControlGUI"]
+stream = ExtResource("6_ewctf")
+bus = &"SFX"
+
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Load" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="options_exit" from="OptionsMenu" to="." method="_on_options_menu_options_exit"]
