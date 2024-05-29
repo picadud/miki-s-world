@@ -14,5 +14,6 @@ layer_0/tile_data = PackedInt32Array(1703947, 131073, 0, 1703948, 131073, 0, 176
 
 [node name="Exit" parent="." instance=ExtResource("3_mcukw")]
 position = Vector2(658, 85)
+collision_mask = 2
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
