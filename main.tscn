@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://buyp6lm46k2ix"]
+[gd_scene load_steps=7 format=3 uid="uid://buyp6lm46k2ix"]
 
 [ext_resource type="Script" path="res://GameWorld.gd" id="1_2rl34"]
+[ext_resource type="Script" path="res://main.gd" id="1_h34a2"]
 [ext_resource type="PackedScene" uid="uid://brnb0otnokkxb" path="res://player/player.tscn" id="2_sv80d"]
 [ext_resource type="Script" path="res://Camera.gd" id="3_t61ek"]
+[ext_resource type="PackedScene" uid="uid://bnsgohjxk8jo4" path="res://gui/options_menu.tscn" id="4_pfugq"]
+[ext_resource type="AudioStream" uid="uid://bdjms5mo653rf" path="res://audio/bgm_mainmenu.mp3" id="5_vski5"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_h34a2")
 
 [node name="GameWorld" type="Node2D" parent="."]
 script = ExtResource("1_2rl34")
@@ -19,3 +23,20 @@ script = ExtResource("3_t61ek")
 position = Vector2(580, 132)
 
 [node name="SoundControl" type="Node2D" parent="."]
+
+[node name="test" type="AudioStreamPlayer2D" parent="SoundControl"]
+position = Vector2(400, 300)
+stream = ExtResource("5_vski5")
+autoplay = true
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_pfugq")]
+
+[node name="Back2MainMenu" type="Button" parent="OptionsMenu"]
+offset_left = 746.0
+offset_top = 544.0
+offset_right = 937.0
+offset_bottom = 609.0
+text = "返回主菜单"
+
+[connection signal="options_exit" from="OptionsMenu" to="." method="_on_options_menu_options_exit"]
+[connection signal="pressed" from="OptionsMenu/Back2MainMenu" to="OptionsMenu" method="_on_back_2_main_menu_pressed"]

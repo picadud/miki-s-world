@@ -111,7 +111,7 @@ text = "存档"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-text = "退出"
+text = "返回"
 
 [connection signal="drag_ended" from="Control/PanelContainer/VBoxContainer/TabContainer/Audio/MasterVolume" to="." method="_on_master_volume_drag_ended"]
 [connection signal="drag_ended" from="Control/PanelContainer/VBoxContainer/TabContainer/Audio/BGMVolume" to="." method="_on_bgm_volume_drag_ended"]
