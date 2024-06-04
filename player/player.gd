@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -350
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_Sprite = $AnimatedSprite2D
+var counter = 0
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -17,18 +18,25 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	var direction = Input.get_axis("move_left", "move_right")
 	#flip the direction based on input
-	if direction > 0 :
-		animated_Sprite.flip_h = true
-	elif direction < 0:
-		animated_Sprite.flip_h = false
+
 	#change animation
+	
 	if is_on_floor():
+		print("yes")
+		print(velocity.y)
 		if direction: #if not zero
 			animated_Sprite.play("run")
 		else:
 			animated_Sprite.play("idle")
 	else:
+		print("no")
+		print(velocity.y)
 		animated_Sprite.play("jump")
+	if direction > 0 :
+		animated_Sprite.flip_h = true
+	elif direction < 0:
+		animated_Sprite.flip_h = false
+
 		
 	#change velocity based on input	
 	if direction:

@@ -4,9 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ingu0nlm80lv" path="res://art/player.png" id="2_rfink"]
 [ext_resource type="Texture2D" uid="uid://jctvlyyohlyn" path="res://art/OldplayerSheet.png" id="3_dmcy1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v830g"]
-radius = 3.64722
-height = 201.123
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_235r6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxwa6"]
 atlas = ExtResource("2_rfink")
@@ -81,10 +79,10 @@ script = ExtResource("1_3dc4g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-scale = Vector2(1.09673, 0.0994416)
-shape = SubResource("CapsuleShape2D_v830g")
+scale = Vector2(0.616728, 0.859442)
+shape = SubResource("RectangleShape2D_235r6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.978319)
 sprite_frames = SubResource("SpriteFrames_6pp5x")
-animation = &"run"
+animation = &"jump"
