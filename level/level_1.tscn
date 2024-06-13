@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo1h6nfb2l7nf"]
+[gd_scene load_steps=6 format=3 uid="uid://bo1h6nfb2l7nf"]
 
 [ext_resource type="Script" path="res://level/level_1.gd" id="1_bhjm7"]
 [ext_resource type="TileSet" uid="uid://cb1t8xpx76kql" path="res://level/level_1.tres" id="2_6tynw"]
 [ext_resource type="PackedScene" uid="uid://da3cvjr0lhywt" path="res://exit.tscn" id="3_mfe8o"]
 [ext_resource type="PackedScene" uid="uid://dnntv0pblyg1p" path="res://level/coin.tscn" id="4_dvwou"]
+[ext_resource type="PackedScene" uid="uid://bgbtivbj6vu35" path="res://level/EventTrigger.tscn" id="5_ncmbf"]
 
 [node name="Level1" type="Node2D" groups=["level"]]
 script = ExtResource("1_bhjm7")
+lighteningSpawnLocation = Vector2(450, 380)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_6tynw")
@@ -15,21 +17,36 @@ layer_0/tile_data = PackedInt32Array(2097163, 327681, 0, 2228245, 327681, 0, 222
 
 [node name="Exit" parent="." instance=ExtResource("3_mfe8o")]
 position = Vector2(223, 339)
-collision_mask = 2
 
-[node name="Coin" parent="." instance=ExtResource("4_dvwou")]
+[node name="Coin" parent="." groups=["Coin"] instance=ExtResource("4_dvwou")]
 position = Vector2(422, 538)
 
-[node name="Coin2" parent="." instance=ExtResource("4_dvwou")]
+[node name="Coin2" parent="." groups=["Coin"] instance=ExtResource("4_dvwou")]
 position = Vector2(424, 476)
 
-[node name="Coin3" parent="." instance=ExtResource("4_dvwou")]
+[node name="Coin3" parent="." groups=["Coin"] instance=ExtResource("4_dvwou")]
 position = Vector2(618, 509)
 
-[node name="Coin4" parent="." instance=ExtResource("4_dvwou")]
+[node name="Coin4" parent="." groups=["Coin"] instance=ExtResource("4_dvwou")]
 position = Vector2(367, 406)
 
-[node name="Coin5" parent="." instance=ExtResource("4_dvwou")]
+[node name="Coin5" parent="." groups=["Coin"] instance=ExtResource("4_dvwou")]
 position = Vector2(761, 473)
 
+[node name="Coin6" parent="." instance=ExtResource("4_dvwou")]
+position = Vector2(248, 440)
+
+[node name="Coin7" parent="." instance=ExtResource("4_dvwou")]
+position = Vector2(264, 440)
+
+[node name="Coin8" parent="." instance=ExtResource("4_dvwou")]
+position = Vector2(280, 440)
+
+[node name="Coin9" parent="." instance=ExtResource("4_dvwou")]
+position = Vector2(296, 440)
+
+[node name="EventTrigger" parent="." instance=ExtResource("5_ncmbf")]
+position = Vector2(608, 416)
+
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="area_entered" from="EventTrigger" to="." method="_on_event_trigger_area_entered"]

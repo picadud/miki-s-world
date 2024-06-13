@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://brnb0otnokkxb"]
+[gd_scene load_steps=14 format=3 uid="uid://brnb0otnokkxb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3dc4g"]
+[ext_resource type="Shape2D" uid="uid://6mu5nhlhypo3" path="res://player/collederShape.tres" id="2_qsksi"]
 [ext_resource type="Texture2D" uid="uid://ingu0nlm80lv" path="res://art/player.png" id="2_rfink"]
 [ext_resource type="Texture2D" uid="uid://jctvlyyohlyn" path="res://art/OldplayerSheet.png" id="3_dmcy1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_235r6"]
+[ext_resource type="Script" path="res://player/ItemChecker.gd" id="5_n6cev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxwa6"]
 atlas = ExtResource("2_rfink")
@@ -74,15 +74,24 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
 script = ExtResource("1_3dc4g")
+LifeCount = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(0.616728, 0.859442)
-shape = SubResource("RectangleShape2D_235r6")
+shape = ExtResource("2_qsksi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1, 0.978319)
 sprite_frames = SubResource("SpriteFrames_6pp5x")
 animation = &"jump"
+
+[node name="ItemChecker" type="Area2D" parent="."]
+script = ExtResource("5_n6cev")
+
+[node name="CheckerShape" type="CollisionShape2D" parent="ItemChecker"]
+scale = Vector2(0.72, 1)
+shape = ExtResource("2_qsksi")
+
+[connection signal="area_entered" from="ItemChecker" to="." method="_on_item_checker_area_entered"]
