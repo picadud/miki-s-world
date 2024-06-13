@@ -35,13 +35,13 @@ func _on_event_trigger_area_entered(area):
 	
 func _on_lightening_timer_time_out():
 	if lighteningGenerated < numberOfLightening:
-		print("coming")
+		#print("coming")
 		var lgt = lightening.instantiate()
 		add_child(lgt)		
 		lgt.position = lighteningSpawnLocation
 		lighteningGenerated += 1
 	else:
-		print("runout")
+		#print("runout")
 		lighteningTimer.queue_free()
 		
 		
