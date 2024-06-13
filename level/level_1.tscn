@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo1h6nfb2l7nf"]
+[gd_scene load_steps=5 format=3 uid="uid://bo1h6nfb2l7nf"]
 
 [ext_resource type="Script" path="res://level/level_1.gd" id="1_bhjm7"]
 [ext_resource type="TileSet" uid="uid://cb1t8xpx76kql" path="res://level/level_1.tres" id="2_6tynw"]
 [ext_resource type="PackedScene" uid="uid://da3cvjr0lhywt" path="res://exit.tscn" id="3_mfe8o"]
 [ext_resource type="PackedScene" uid="uid://dnntv0pblyg1p" path="res://level/coin.tscn" id="4_dvwou"]
-[ext_resource type="PackedScene" uid="uid://bgbtivbj6vu35" path="res://level/EventTrigger.tscn" id="5_ipgwl"]
 
 [node name="Level1" type="Node2D" groups=["level"]]
 script = ExtResource("1_bhjm7")
@@ -45,8 +44,4 @@ position = Vector2(280, 440)
 [node name="Coin9" parent="." instance=ExtResource("4_dvwou")]
 position = Vector2(296, 440)
 
-[node name="EventTrigger" parent="." instance=ExtResource("5_ipgwl")]
-position = Vector2(640, 416)
-
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
-[connection signal="area_entered" from="EventTrigger" to="." method="_on_event_trigger_area_entered"]

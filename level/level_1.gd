@@ -3,12 +3,19 @@ extends Node2D
 #每个关卡都应该添加进组“level”，别忘了
 signal level_completed
 const lightening = preload("res://level/Lightening.tscn")
+var eventTrigger = preload("res://level/EventTrigger.tscn")
 var lighteningTimer: Timer
 var lighteningGenerated: int = 0
-@onready var lighteningTrigger: Area2D = $EventTrigger
+var lighteningTrigger: Area2D = eventTrigger.instantiate()
 @export var lighteningSpawnLocation: Vector2 = Vector2(100, -50)
 @export var numberOfLightening: int = 10
 @export var lighteningInterval: float = 0.3
+
+func _ready():
+
+	lighteningTrigger.position = Vector2(608, 416)
+	add_child(lighteningTrigger)
+	lighteningTrigger.area_entered.connect(_on_event_trigger_area_entered)
 
 #进入终点后发出信号。
 func _on_exit_body_entered(body):
