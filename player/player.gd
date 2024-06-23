@@ -1,18 +1,30 @@
 extends CharacterBody2D
 
+signal LifeChanged
+signal CoinChanged
 
 const SPEED = 250
 const JUMP_VELOCITY = -350
-var maxHealth = 4 #not sure if gonna keep this
-@export var coinCount: int
-@export var LifeCount: int
+var maxHealth = 10 #not sure if gonna keep this
 
-
+@export var coinCount: int : set = set_coin_count
+func set_coin_count(value):
+	coinCount = value
+	CoinChanged.emit(value)
+	
+@export var LifeCount: int : set = set_life_count
+func set_life_count(value):
+	LifeCount = value
+	LifeChanged.emit(value)
+	if LifeCount <= 0 :
+		player_dead()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_Sprite = $AnimatedSprite2D
 var counter = 0
+
+
 func _ready():
 	add_to_group("player")
 	
@@ -69,3 +81,5 @@ func _on_item_checker_area_entered(area):
 		
 
 	
+func player_dead():
+	pass

@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://hmg6ck6qpb5t"]
+
+[ext_resource type="Texture2D" uid="uid://bw8xn88gkraxf" path="res://art/heart.png" id="1_8bid2"]
+[ext_resource type="Script" path="res://gui/in_game_ui.gd" id="1_oihre"]
+[ext_resource type="Texture2D" uid="uid://bo6pb0newc3r4" path="res://art/coin.png" id="3_000c5"]
+
+[node name="InGameUI" type="CanvasLayer"]
+script = ExtResource("1_oihre")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 369.0
+offset_bottom = 124.0
+
+[node name="LifeCounter" type="FlowContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Heart1" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart4" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart5" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart6" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart7" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart8" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart9" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Heart10" type="TextureRect" parent="VBoxContainer/LifeCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_8bid2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_000c5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = " X 0"

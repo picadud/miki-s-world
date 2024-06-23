@@ -40,3 +40,4 @@ func new_level():
 	
 	levelnum += 1
 	player_reset()
+	$InGameUI.visible = true
