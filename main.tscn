@@ -15,6 +15,7 @@ script = ExtResource("1_h34a2")
 script = ExtResource("1_2rl34")
 
 [node name="Player" parent="GameWorld" instance=ExtResource("2_sv80d")]
+LifeCount = 0
 
 [node name="Camera" type="Camera2D" parent="GameWorld"]
 zoom = Vector2(2, 2)
