@@ -138,17 +138,15 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_3dc4g")
 LifeCount = 4
-metadata/_edit_vertical_guides_ = [-7.0, 8.0]
-metadata/_edit_horizontal_guides_ = [-10.0, 10.0]
+metadata/_edit_vertical_guides_ = [-10.0, 10.0]
+metadata/_edit_horizontal_guides_ = [-7.0, 18.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.616728, 0.859442)
+position = Vector2(0, 4)
+scale = Vector2(1, 1.392)
 shape = ExtResource("2_qsksi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_6pp5x")
 animation = &"jump"
 
@@ -156,7 +154,8 @@ animation = &"jump"
 script = ExtResource("5_n6cev")
 
 [node name="CheckerShape" type="CollisionShape2D" parent="ItemChecker"]
-scale = Vector2(0.72, 1)
+position = Vector2(0, 4)
+scale = Vector2(1, 1.389)
 shape = ExtResource("2_qsksi")
 
 [connection signal="area_entered" from="ItemChecker" to="." method="_on_item_checker_area_entered"]
