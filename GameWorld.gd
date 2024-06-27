@@ -11,8 +11,9 @@ var levelnum = 0
 @onready var levels = [level1, level2, level3]
 
 
-#初始生成
+#初始生成,现在在这里设置玩家初始血量。
 func _ready():
+	$Player.LifeCount = 4
 	new_level()
 
 #重回出生点
@@ -40,3 +41,4 @@ func new_level():
 	
 	levelnum += 1
 	player_reset()
+	$InGameUI.visible = true
