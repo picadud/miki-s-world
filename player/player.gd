@@ -51,9 +51,9 @@ func _physics_process(delta):
 
 		animated_Sprite.play("jump")
 	if direction > 0 :
-		animated_Sprite.flip_h = true
-	elif direction < 0:
 		animated_Sprite.flip_h = false
+	elif direction < 0:
+		animated_Sprite.flip_h = true
 
 	#change velocity based on input	
 	if direction:
