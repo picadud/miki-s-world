@@ -6,7 +6,8 @@ signal CoinChanged
 const SPEED = 250
 const JUMP_VELOCITY = -350
 var maxHealth = 10 #not sure if gonna keep this
-
+var jumpBufferTimer: Timer
+@export var jumpBufferTime: float = 0.1
 @export var coinCount: int : set = set_coin_count
 func set_coin_count(value):
 	coinCount = value
@@ -27,6 +28,10 @@ var counter = 0
 
 func _ready():
 	add_to_group("player")
+	jumpBufferTimer = Timer.new()
+	add_child(jumpBufferTimer)
+	jumpBufferTimer.wait_time = jumpBufferTime
+	jumpBufferTimer.one_shot = true
 	
 
 func _physics_process(delta):
@@ -34,8 +39,13 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump"):
+		jumpBufferTimer.start()	
+	if !jumpBufferTimer.is_stopped() and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jumpBufferTimer.stop()
+		
+	
 	var direction = Input.get_axis("move_left", "move_right")
 	#flip the direction based on input
 
@@ -63,9 +73,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-
-
-
 
 
 func _on_item_checker_area_entered(area):

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brnb0otnokkxb" path="res://player/player.tscn" id="2_sv80d"]
 [ext_resource type="Script" path="res://Camera.gd" id="3_t61ek"]
 [ext_resource type="PackedScene" uid="uid://bnsgohjxk8jo4" path="res://gui/options_menu.tscn" id="4_pfugq"]
-[ext_resource type="PackedScene" uid="uid://hmg6ck6qpb5t" path="res://gui/in_game_ui.tscn" id="5_8j0q0"]
+[ext_resource type="PackedScene" uid="uid://cny1u7jeejuo0" path="res://gui/in_game_ui.tscn" id="5_8j0q0"]
 [ext_resource type="AudioStream" uid="uid://bdjms5mo653rf" path="res://audio/bgm_mainmenu.mp3" id="5_vski5"]
 
 [node name="Main" type="Node2D"]
